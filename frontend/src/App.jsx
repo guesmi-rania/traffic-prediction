@@ -12,7 +12,7 @@ function App() {
   });
 
   const handlePredict = async () => {
-    const res = await axios.post("https://traffic-prediction-tnie.onrender.com", {
+    const res = await axios.post("https://traffic-prediction-tnie.onrender.com/predict", {
       vehicles: Number(vehicles)
     });
 
@@ -27,30 +27,39 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>🚦 Traffic Prediction Dashboard</h1>
-
-      <input
-        type="number"
-        value={vehicles}
-        onChange={(e) => setVehicles(e.target.value)}
-        placeholder="Number of vehicles"
-      />
-
-      <button onClick={handlePredict}>Predict</button>
-
-      {result && (
-        <div>
-          <h3>Result:</h3>
-          <p>Vehicles: {result.vehicles}</p>
-          <p>Traffic Level: {result.traffic_level}</p>
+      <div className="container">
+        <h1>🚦 Traffic Prediction Dashboard</h1>
+    
+        <div className="card">
+          <input
+            type="number"
+            value={vehicles}
+            onChange={(e) => setVehicles(e.target.value)}
+            placeholder="Enter number of vehicles..."
+          />
+    
+          <button onClick={handlePredict}>Predict</button>
         </div>
-      )}
-
-      <h3>Traffic Distribution</h3>
-      <TrafficChart data={history} />
-    </div>
-  );
+    
+        {result && (
+          <div className="result-card">
+            <h3>Prediction Result</h3>
+            <p><strong>Vehicles:</strong> {result.vehicles}</p>
+            <p>
+              <strong>Traffic Level:</strong>{" "}
+              <span className={`badge ${result.traffic_level.toLowerCase()}`}>
+                {result.traffic_level}
+              </span>
+            </p>
+          </div>
+        )}
+    
+        <div className="chart-card">
+          <h3>Traffic Distribution</h3>
+          <TrafficChart data={history} />
+        </div>
+      </div>
+    );
 }
 
 export default App;
