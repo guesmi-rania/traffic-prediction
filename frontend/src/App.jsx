@@ -12,7 +12,7 @@ function App() {
   });
 
   const handlePredict = async () => {
-    const res = await axios.post("http://127.0.0.1:5000/predict", {
+    const res = await axios.post("https://traffic-prediction-tnie.onrender.com", {
       vehicles: Number(vehicles)
     });
 
