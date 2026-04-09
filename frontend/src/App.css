@@ -1,67 +1,77 @@
 body {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  font-family: Arial, sans-serif;
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #1e3a8a, #9333ea);
   color: white;
 }
 
-.container {
-  max-width: 500px;
-  margin: 60px auto;
+/* MAIN */
+.app {
+  padding: 40px;
   text-align: center;
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  font-size: 32px;
 }
 
+/* DASHBOARD GRID */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* CARD */
 .card {
-  background: #1e293b;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* INPUT */
 input {
-  width: 100%;
+  width: 250px;       /* largeur fixe */
+  max-width: 100%;    /* responsive */
   padding: 12px;
-  border-radius: 8px;
+  margin: 15px auto;
+  display: block;
+  border-radius: 10px;
   border: none;
-  margin-bottom: 10px;
+  outline: none;
   font-size: 16px;
 }
 
+/* BUTTON */
 button {
   width: 100%;
   padding: 12px;
-  background: #22c55e;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
+  background: linear-gradient(135deg, #22c55e, #4ade80);
+  color: white;
   font-weight: bold;
   cursor: pointer;
-  color: white;
   transition: 0.3s;
 }
 
 button:hover {
-  background: #16a34a;
+  transform: scale(1.05);
 }
 
-.result-card {
-  margin-top: 20px;
-  padding: 15px;
-  background: #1e293b;
-  border-radius: 12px;
-}
-
-.chart-card {
-  margin-top: 20px;
-  padding: 15px;
-  background: #1e293b;
-  border-radius: 12px;
+/* RESULT */
+.result-card p {
+  font-size: 18px;
 }
 
 /* BADGES */
 .badge {
+  margin-left: 10px;
   padding: 5px 10px;
   border-radius: 8px;
   font-weight: bold;
@@ -77,4 +87,20 @@ button:hover {
 
 .badge.high {
   background: #ef4444;
+}
+
+/* CHART FULL WIDTH */
+.chart-card {
+  grid-column: span 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-card {
+    grid-column: span 1;
+  }
 }
