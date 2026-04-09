@@ -4,14 +4,14 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-@app.route('/predict', methods=['POST'])
+@app.route("/predict", methods=["POST"])
 def predict():
     data = request.json
     vehicles = data.get("vehicles", 0)
 
-    if vehicles < 100:
+    if vehicles < 50:
         level = "Low"
-    elif vehicles < 200:
+    elif vehicles < 150:
         level = "Medium"
     else:
         level = "High"
@@ -22,4 +22,4 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run()
